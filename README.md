@@ -31,15 +31,17 @@ personal neovim configuration files
 
 ## colours used
 
+catppuccin theme with slight modifications
+
 ```lua
-    local colors = {
-      base     = '#1e1e2e',
-      overlay0 = '#6c7086',
-      text     = '#cdd6f4',
-      mauve    = '#cba6f7',
-      lavender = '#b4befe',
-      peach    = '#fab387',
-      green    = '#a6e3a1',
-      red      = '#f38ba8',
-    }
+local colors = {
+  base     = '#1e1e2e', -- dark navy/charcoal (main background color)
+  overlay0 = '#6c7086', -- muted grayish-blue (comments, subtle borders, tertiary overlays)
+  text     = '#cdd6f4', -- light lavender-tinted white (primary default text)
+  mauve    = '#cba6f7', -- pastel purple (keywords, conditionals, control structures)
+  lavender = '#b4befe', -- soft periwinkle/blue-purple (secondary accents, variables, cursors)
+  peach    = '#fab387', -- pastel orange/peach (properties, attributes, numbers)
+  green    = '#a6e3a1', -- soft mint green (strings, git additions, success states)
+  red      = '#f38ba8', -- pastel coral/red (errors, git deletions, dynamic variables)
+}
 ```
