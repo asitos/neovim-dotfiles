@@ -2,8 +2,6 @@
 
 personal neovim configuration files
 
----
-
 ## plugins
 
 <div align="center">
