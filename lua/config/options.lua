@@ -2,7 +2,6 @@ local opt = vim.opt
 local cmd = vim.cmd
 vim.g.have_nerd_font = true
 
--- my muted camellia palette color scheme
 cmd.colorscheme("catppuccin")
 
 -- ui

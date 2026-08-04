@@ -6,6 +6,8 @@ personal neovim configuration files
 
 ## plugins
 
+<div align="center">
+
 | plugin | purpose |
 |--------|---------|
 | [arduino.nvim](https://github.com/yuukiflow/Arduino-Nvim) | arduino development support |
@@ -25,4 +27,21 @@ personal neovim configuration files
 | [treesj](https://github.com/Wansmer/treesj) | split/join blocks of code |
 | [twilight](https://github.com/folke/twilight.nvim) | dim inactive lines of code |
 
+</div>
+
 ---
+
+## colours used
+
+```lua
+    local colors = {
+      base     = '#1e1e2e',
+      overlay0 = '#6c7086',
+      text     = '#cdd6f4',
+      mauve    = '#cba6f7',
+      lavender = '#b4befe',
+      peach    = '#fab387',
+      green    = '#a6e3a1',
+      red      = '#f38ba8',
+    }
+```
