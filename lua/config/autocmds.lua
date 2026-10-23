@@ -24,19 +24,44 @@ autocmd("FileType", {
     command = "setlocal spell wrap",
 })
 
--- change local directory to file's parent
-autocmd({ "BufEnter", "BufWinEnter" }, {
-    callback = function()
-        local file = vim.api.nvim_buf_get_name(0)
-        if file ~= "" and vim.fn.filereadable(file) == 1 then
-            local dir = vim.fn.fnamemodify(file, ":h")
-            vim.cmd("lcd " .. vim.fn.fnameescape(dir))
-        end
-    end,
-})
+-- change local directory to file's parent (DISABLED for PlatformIO compatibility)
+-- autocmd({ "BufEnter", "BufWinEnter" }, {
+--     callback = function()
+--         local file = vim.api.nvim_buf_get_name(0)
+--         if file ~= "" and vim.fn.filereadable(file) == 1 then
+--             local dir = vim.fn.fnamemodify(file, ":h")
+--             vim.cmd("lcd " .. vim.fn.fnameescape(dir))
+--         end
+--     end,
+-- })
 
 -- automatically split help buffers to the right
 autocmd("FileType", {
     pattern = "help",
     command = "wincmd L",
+})
+
+-- auto-populate new java files with standard class and main method
+autocmd("BufNewFile", {
+    pattern = "*.java",
+    callback = function()
+        local filename = vim.fn.expand("%:t:r")
+
+        local template = {
+            "public class " .. filename .. " {",
+            "    public static void main(String[] args) {",
+            "        ",
+            "    }",
+            "}"
+        }
+
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, template)
+        
+        vim.schedule(function()
+            if vim.api.nvim_buf_is_valid(0) then
+                vim.api.nvim_win_set_cursor(0, { 3, 8 })
+                vim.cmd("startinsert")
+            end
+        end)
+    end,
 })

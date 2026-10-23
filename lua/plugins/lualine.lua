@@ -112,7 +112,12 @@ return {
           },
         },
         lualine_c = {},
-        lualine_x = {},
+        lualine_x = {
+          {
+            '%S',
+            color = { fg = colors.peach, bg = colors.base },
+          },
+        },
         lualine_y = { search_result, 'filetype' },
         lualine_z = { '%l:%c', '%p%%/%L' },
       },

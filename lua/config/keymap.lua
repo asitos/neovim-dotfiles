@@ -3,25 +3,26 @@ vim.g.maplocalleader = " "
 local map = vim.keymap.set
 
 map("n", "-", "<cmd>Oil --float<CR>", { desc = "Open parent directory" }) -- oil
-map("n", "_", "<cmd>Dashboard<CR>")                                       -- dashboard
-map("n", "<leader>T", "<cmd>Twilight<CR>", { desc = "twilight" })         -- twilight
+map("n", "_", "<cmd>Dashboard<CR>") -- dashboard
+map("n", "<leader>T", "<cmd>Twilight<CR>", { desc = "twilight" }) -- twilight
 
 -- explorer
 map("n", "<leader>sE", ":Telescope file_browser<CR>", { desc = "Open Explorer" })
 map("n", "<leader>se", function()
-    require("telescope").extensions.file_browser.file_browser({
-        path = "%:p:h", cwd = vim.fn.expand("%:p:h")
-    })
+	require("telescope").extensions.file_browser.file_browser({
+		path = "%:p:h",
+		cwd = vim.fn.expand("%:p:h"),
+	})
 end, { desc = "File Browser (current file dir)" })
 
 -- toggle relative and absolute line numbers
 map("n", "<leader>N", function()
-    if vim.wo.relativenumber then
-        vim.wo.relativenumber = false
-        vim.wo.number = true
-    else
-        vim.wo.relativenumber = true
-    end
+	if vim.wo.relativenumber then
+		vim.wo.relativenumber = false
+		vim.wo.number = true
+	else
+		vim.wo.relativenumber = true
+	end
 end, { desc = "toggle relativenumber" })
 
 -- barbar
@@ -29,25 +30,25 @@ map("n", "<A-h>", "<cmd>bprev<CR>")
 map("n", "<A-l>", "<cmd>bnext<CR>")
 map("n", "<A-c>", "<cmd>BufferClose<CR>")
 map("n", "<A-C>", "<cmd>BufferRestore<CR>")
-map('n', '<A-H>', '<cmd>BufferMovePrevious<CR>')
-map('n', '<A-L>', '<cmd>BufferMoveNext<CR>')
-map('n', '<A-p>', '<cmd>BufferPick<CR>')
-map('n', '<A-P>', '<cmd>BufferPickDelete<CR>')
+map("n", "<A-H>", "<cmd>BufferMovePrevious<CR>")
+map("n", "<A-L>", "<cmd>BufferMoveNext<CR>")
+map("n", "<A-p>", "<cmd>BufferPick<CR>")
+map("n", "<A-P>", "<cmd>BufferPickDelete<CR>")
 
-map('n', '<A-1>', '<cmd>BufferGoto 1<CR>')
-map('n', '<A-2>', '<cmd>BufferGoto 2<CR>')
-map('n', '<A-3>', '<cmd>BufferGoto 3<CR>')
-map('n', '<A-4>', '<cmd>BufferGoto 4<CR>')
-map('n', '<A-5>', '<cmd>BufferGoto 5<CR>')
-map('n', '<A-6>', '<cmd>BufferGoto 6<CR>')
-map('n', '<A-7>', '<cmd>BufferGoto 7<CR>')
-map('n', '<A-8>', '<cmd>BufferGoto 8<CR>')
-map('n', '<A-9>', '<cmd>BufferGoto 9<CR>')
-map('n', '<A-0>', '<cmd>BufferLast<CR>')
+map("n", "<A-1>", "<cmd>BufferGoto 1<CR>")
+map("n", "<A-2>", "<cmd>BufferGoto 2<CR>")
+map("n", "<A-3>", "<cmd>BufferGoto 3<CR>")
+map("n", "<A-4>", "<cmd>BufferGoto 4<CR>")
+map("n", "<A-5>", "<cmd>BufferGoto 5<CR>")
+map("n", "<A-6>", "<cmd>BufferGoto 6<CR>")
+map("n", "<A-7>", "<cmd>BufferGoto 7<CR>")
+map("n", "<A-8>", "<cmd>BufferGoto 8<CR>")
+map("n", "<A-9>", "<cmd>BufferGoto 9<CR>")
+map("n", "<A-0>", "<cmd>BufferLast<CR>")
 
-map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', { desc = "Sort Buffers by Number" })
-map('n', '<leader>bn', '<Cmd>BufferOrderByName<CR>', { desc = "Sort Buffers by Name" })
-map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { desc = "Sort Buffers by Language" })
+map("n", "<leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", { desc = "Sort Buffers by Number" })
+map("n", "<leader>bn", "<Cmd>BufferOrderByName<CR>", { desc = "Sort Buffers by Name" })
+map("n", "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>", { desc = "Sort Buffers by Language" })
 
 -- switch windows with CTRL+<hjkl>
 map("n", "<C-h>", "<C-w>h")
@@ -80,7 +81,6 @@ map("n", "<leader>opi", ":ObsidianPasteImg<CR>", { desc = "Obsidian paste image"
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "lazygit" })
 -- render-markdown
 map("n", "<leader>rt", "<cmd>RenderMarkdown buf_toggle<CR>")
-map("n", "<leader>rp", "<cmd>RenderMarkdown preview<CR>")
 
 -- useful maps
 map("n", "<leader>w", "<cmd>update<CR>")
@@ -88,9 +88,9 @@ map("n", "<leader>q", "<cmd>q<CR>")
 map({ "n", "v" }, "<leader>n", ":norm")
 map("n", "<leader>W", ":set wrap!<CR>", { desc = "toggle wrap" })
 map("n", "<leader>S", ":%s/")
-map("n", "<leader>R", ":so %<CR>")                             -- reload neovim config
-map("n", "<Esc>", "<cmd>noh<CR>")                              -- clear search highlights
-map('n', '<leader>vs', '<cmd>vsplit<CR> <cmd>bnext<CR>')       -- ver split + open next buffer
+map("n", "<leader>R", ":so %<CR>") -- reload neovim config
+map("n", "<Esc>", "<cmd>noh<CR>") -- clear search highlights
+map("n", "<leader>vs", "<cmd>vsplit<CR> <cmd>bnext<CR>") -- ver split + open next buffer
 map("n", "<leader>f", vim.lsp.buf.format, { desc = "format" }) -- format
 
 map("n", "H", "^")
@@ -101,127 +101,262 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-i>", "<C-i>zz")
 map("n", "<C-o>", "<C-o>zz")
 
-
 vim.keymap.set("n", "<leader>rr", function()
-    vim.cmd("w") 
-    local file = vim.fn.expand("%")
-    local output = vim.fn.expand("%:r")
-    vim.cmd(string.format("split | terminal g++ -std=c++20 -O2 %s -o %s && ./%s", file, output, output))
-    vim.cmd("startinsert")
+	vim.cmd("w")
+	local file = vim.fn.expand("%")
+	local output = vim.fn.expand("%:r")
+	vim.cmd("split")
+	vim.cmd(string.format("terminal g++ -std=c++20 -O2 '%s' -o '%s' && ./'%s'", file, output, output))
+	vim.cmd("startinsert")
 end, { desc = "Compile and Run C++" })
 
+
+vim.keymap.set("n", "<leader>pr", function()
+	vim.cmd("w")
+	local file = vim.fn.expand("%:t")
+	local dir = vim.fn.expand("%:p:h")
+	vim.cmd("split")
+	vim.cmd(string.format("terminal cd '%s' && /usr/bin/python3 '%s'", dir, file))
+	vim.cmd("startinsert")
+end, { desc = "Run Python (Global)" })
 
 vim.keymap.set("n", "<leader>kl", "ggguG<C-o>", { noremap = true, desc = "Lowercase entire file" })
 vim.keymap.set("n", "<leader>gp", function()
-  vim.cmd("w") 
-  local file = vim.fn.expand("%") -- get relative file path
-  
-  vim.cmd(string.format("split | terminal /home/asitos/!corporateMajdoori/scripts/push.sh %s", file))
-  
-  vim.cmd("startinsert")
+	vim.cmd("w")
+	local file = vim.fn.expand("%") -- get relative file path
+
+	vim.cmd(string.format("split | terminal /home/asitos/!corporateMajdoori/scripts/push.sh %s", file))
+
+	vim.cmd("startinsert")
 end, { desc = "Push DSA to GitHub" })
 
+vim.keymap.set("n", "<leader>cpp", function()
+	local filename = vim.fn.expand("%:t:r")
 
-vim.keymap.set('n', '<leader>cpp', function()
-  local filename = vim.fn.expand('%:t:r')
-  
-  local func_name = string.match(filename, "^%d+_(.+)$")
-  
-  if not func_name then
-    func_name = filename
-  end
+	local func_name = string.match(filename, "%d+_(.+)$")
 
-  local template = {
-    "#include <bits/stdc++.h>",
-    "using namespace std;",
-    "",
-    "class Solution {",
-    "public:",
-    "  int " .. func_name .. "(int n) {",
-    "    int res;",
-    "     ", 
-    "     ",
-    "     ",
-    "    return res;",
-    "  }",
-    "};",
-    "",
-    "int main() {",
-    "  Solution obj;",
-    "  int n = 5;",
-    "  cout << obj." .. func_name .. "(n);",
-    "",
-    "  return 0;",
-    "}"
-  }
+	if not func_name then
+		func_name = filename
+	end
 
-  vim.api.nvim_buf_set_lines(0, 0, -1, false, template)
+	local template = {
+		"#include <bits/stdc++.h>",
+		"using namespace std;",
+		"",
+		"// @leet start",
+		"class Solution {",
+		"public:",
+		"  int " .. func_name .. "(int n) {",
+		"    int res;",
+		"     ",
+		"     ",
+		"     ",
+		"    return res;",
+		"  }",
+		"};",
+		"// @leet end",
+		"",
+		"int main() {",
+		"  Solution obj;",
+		"  int n = 5;",
+		"  cout << obj." .. func_name .. "(n);",
+		"",
+		"  return 0;",
+		"}",
+	}
 
-  vim.api.nvim_win_set_cursor(0, {8, 5})
-  
-  vim.cmd("startinsert")
-  
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, template)
+
+	vim.api.nvim_win_set_cursor(0, { 8, 5 })
+
+	vim.cmd("startinsert")
 end, { desc = "Inject C++ DSA Boilerplate" })
 
-vim.keymap.set('n', '<leader>cpa', function()
-  local filename = vim.fn.expand('%:t:r')
-  
-  local func_name = string.match(filename, "^%d+_(.+)$")
-  
-  if not func_name then
-    func_name = filename
-  end
+vim.keymap.set("n", "<leader>jpp", function()
+	local filename = vim.fn.expand("%:t:r")
 
-  local template = {
-    "#include <bits/stdc++.h>",
-    "using namespace std;",
-    "",
-    "class Solution {",
-    "public:",
-    "  vector<int> " .. func_name .. "(vector<int>& nums) {",
-    "    vector<int> res;",
-    "     ", 
-    "     ",
-    "     ",
-    "    return res;",
-    "  }",
-    "};",
-    "",
-    "int main() {",
-    "  Solution obj;",
-    "  vector<int> nums = {5, 4, 3, 2, 1};",
-    "  vector<int> res = obj." .. func_name .. "(nums);",
-    "",
-    "  for (auto i : res) {",
-    "    cout << i << \" \";",
-    "  }",
-    "  cout << endl;",
-    "",
-    "  return 0;",
-    "}"
-  }
+	local func_name = string.match(filename, "%d+_(.+)$")
+	if not func_name then
+		func_name = filename
+	end
 
-  vim.api.nvim_buf_set_lines(0, 0, -1, false, template)
+	local template = {
+		"class Solution {",
+		"    public int " .. func_name .. "(int n) {",
+		"        int res = 0;",
+		"        ",
+		"        ",
+		"        ",
+		"        return res;",
+		"    }",
+		"}",
+		"",
+		"class " .. filename .. " {",
+		"    public static void main(String[] args) {",
+		"        Solution obj = new Solution();",
+		"        int n = 5;",
+		"        System.out.println(obj." .. func_name .. "(n));",
+		"    }",
+		"}",
+	}
 
-  vim.api.nvim_win_set_cursor(0, {8, 5})
-  
-  vim.cmd("startinsert")
-  
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, template)
+	vim.api.nvim_win_set_cursor(0, { 3, 0 })
+	vim.cmd("startinsert")
+end, { desc = "Inject Java DSA Boilerplate" })
+
+vim.keymap.set("n", "<leader>cpa", function()
+	local filename = vim.fn.expand("%:t:r")
+
+	local func_name = string.match(filename, "%d+_(.+)$")
+
+	if not func_name then
+		func_name = filename
+	end
+
+	local template = {
+		"#include <bits/stdc++.h>",
+		"using namespace std;",
+		"",
+		"// @leet start",
+		"class Solution {",
+		"public:",
+		"  vector<int> " .. func_name .. "(vector<int>& nums) {",
+		"    vector<int> res;",
+		"     ",
+		"     ",
+		"     ",
+		"    return res;",
+		"  }",
+		"};",
+		"// @leet end",
+		"",
+		"int main() {",
+		"  Solution obj;",
+		"  vector<int> nums = {5, 4, 3, 2, 1};",
+		"  vector<int> res = obj." .. func_name .. "(nums);",
+		"",
+		"  for (auto i : res) {",
+		'    cout << i << " ";',
+		"  }",
+		"  cout << endl;",
+		"",
+		"  return 0;",
+		"}",
+	}
+
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, template)
+
+	vim.api.nvim_win_set_cursor(0, { 7, 0 })
+
+	vim.cmd("startinsert")
 end, { desc = "Inject C++ Array Boilerplate" })
 
-vim.keymap.set({'n', 'v'}, 'B', '^', { noremap = true, desc = "Jump to start of line" })
-vim.keymap.set({'n', 'v'}, 'W', '$', { noremap = true, desc = "Jump to end of line" })
-vim.keymap.set({"n", "v"}, ";", ";", { noremap = true, desc = "Repeat latest f/t jump" })
+vim.keymap.set({ "n", "v" }, "B", "^", { noremap = true, desc = "Jump to start of line" })
+vim.keymap.set({ "n", "v" }, "W", "$", { noremap = true, desc = "Jump to end of line" })
+vim.keymap.set({ "n", "v" }, ";", ";", { noremap = true, desc = "Repeat latest f/t jump" })
 
-
-map("n", "<leader>r", ":w<CR>:!python %<CR>", { desc = "Run current python file" })
+map("n", "<leader>rp", ":w<CR>:!.venv/bin/python %<CR>", { desc = "Run current python file" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-map("n", "<F5>", function()
-  vim.cmd("w") 
-  local file = vim.fn.expand("%")
-  local output = vim.fn.expand("%:r")
-  vim.cmd(string.format("split | terminal g++ -std=c++20 -O2 %s -o %s && ./%s", file, output, output))
-  vim.cmd("startinsert") 
-end, { desc = "Compile and Run C++" })
+local function run_java_in_bottom_terminal()
+	-- Save the current file first
+	vim.cmd("write")
+
+	local file_path = vim.fn.expand("%:p")
+	local file_name = vim.fn.expand("%:t")
+	local class_name = vim.fn.expand("%:t:r")
+	local dir_path = vim.fn.expand("%:p:h")
+
+	-- Check if Maven project exists in root
+	local pom_exists = vim.fn.filereadable(vim.fn.getcwd() .. "/pom.xml") == 1
+
+	local cmd = ""
+	if pom_exists then
+		-- If inside a Maven project, run using Maven exec or standard compile
+		cmd = string.format("cd '%s' && javac -d /tmp '%s' && java -cp /tmp '%s'", dir_path, file_path, class_name)
+	else
+		-- Compiles into /tmp to keep workspace clean, then executes
+		cmd = string.format("cd '%s' && javac -d /tmp '%s' && java -cp /tmp '%s'", dir_path, file_path, class_name)
+	end
+
+	-- Open a split terminal occupying the bottom 15 rows
+	vim.cmd("botright 15split")
+	vim.fn.termopen(cmd)
+
+	-- Enter terminal insert mode immediately
+	vim.cmd("startinsert")
+end
+
+-- Bind specifically for Java buffers
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "java",
+	callback = function(args)
+		vim.keymap.set("n", "<leader>jr", run_java_in_bottom_terminal, {
+			desc = "Run Java in bottom terminal",
+			buffer = args.buf,
+			silent = true,
+		})
+	end,
+})
+
+-- cp boilerplate (moneySums.cpp)
+map("n", "<leader>cpf", function()
+	local boilerplate = {
+		"#include <bits/stdc++.h>",
+		"using namespace std;",
+		"",
+		"int solve(vector<int> &nums) {",
+		"  int res;",
+		"",
+		"  return res;",
+		"}",
+		"",
+		"int main() {",
+		"  ios_base::sync_with_stdio(false);",
+		"  cin.tie(NULL);",
+		"",
+		"  int n, x;",
+		"  vector<int> arr;",
+		"  cin >> n;",
+		"",
+		"  for (int i = 0; i < n; i++) {",
+		"    cin >> x;",
+		"    arr.push_back(x);",
+		"  }",
+		"",
+		"  solve(arr);",
+		"",
+		"  return 0;",
+		"}",
+		"",
+	}
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, boilerplate)
+	-- line 6 is the blank line after "int res;"
+	vim.api.nvim_win_set_cursor(0, { 5, 0 })
+end, { desc = "Insert CP boilerplate (moneySums)" })
+
+vim.keymap.set("n", "<leader>ll", "<cmd>Leet<CR>", { desc = "LeetCode Menu" })
+vim.keymap.set("n", "<leader>lr", "<cmd>Leet run<CR>", { desc = "LeetCode Run" })
+vim.keymap.set("n", "<leader>ls", "<cmd>Leet submit<CR>", { desc = "LeetCode Submit" })
+
+-- PlatformIO Keymaps
+vim.keymap.set("n", "<leader>pb", function()
+	vim.cmd("w")
+	vim.cmd("split")
+	vim.cmd("terminal pio run")
+	vim.cmd("startinsert")
+end, { desc = "PlatformIO Build" })
+
+vim.keymap.set("n", "<leader>pu", function()
+	vim.cmd("w")
+	vim.cmd("split")
+	vim.cmd("terminal pio run -t upload")
+	vim.cmd("startinsert")
+end, { desc = "PlatformIO Upload" })
+
+
+-- Diagnostic (Error) Keymaps
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Show line diagnostics (errors)" })

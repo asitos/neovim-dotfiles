@@ -1,5 +1,5 @@
 require("lazy").setup({
-	-- { import = "plugins.arduino" },
+	{ import = "plugins.arduino" },
 	{ import = "plugins.barbar" },
 	{ import = "plugins.cmp" },
 	{ import = "plugins.core" },
@@ -16,15 +16,7 @@ require("lazy").setup({
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.treesj" },
 	{ import = "plugins.twilight" },
+	{ import = "plugins.leetcode" },
 
-	lockfile = false,
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" },
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = {},
-	},
 })
