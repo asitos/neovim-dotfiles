@@ -44,16 +44,6 @@ return {
 			})
 			vim.lsp.enable("clangd")
 
-			-- Specific config for Arduino
-			vim.lsp.config("arduino_language_server", {
-				cmd = {
-					"arduino-language-server",
-					"-cli-config", vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-					"-cli", vim.fn.expand("~/.local/bin/arduino-cli"),
-					"-clangd", "clangd"
-				}
-			})
-			vim.lsp.enable("arduino_language_server")
 		end,
 	},
 	{
@@ -80,6 +70,9 @@ return {
 					"arduino_language_server",
 				},
 				automatic_installation = true,
+				automatic_enable = {
+					exclude = { "arduino_language_server" },
+				},
 			})
 		end,
 	},
