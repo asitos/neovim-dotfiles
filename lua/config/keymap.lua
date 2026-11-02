@@ -80,7 +80,8 @@ map("n", "<leader>opi", ":ObsidianPasteImg<CR>", { desc = "Obsidian paste image"
 -- lazygit
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "lazygit" })
 -- render-markdown
-map("n", "<leader>rt", "<cmd>RenderMarkdown buf_toggle<CR>")
+map("n", "<leader>md", "<cmd>RenderMarkdown toggle<CR>", { desc = "Markdown: Toggle render" })
+map("n", "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", { desc = "Markdown: Toggle render" })
 
 -- useful maps
 map("n", "<leader>w", "<cmd>update<CR>")

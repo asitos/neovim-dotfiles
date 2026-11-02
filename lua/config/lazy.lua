@@ -17,6 +17,7 @@ require("lazy").setup({
 	{ import = "plugins.treesj" },
 	{ import = "plugins.twilight" },
 	{ import = "plugins.leetcode" },
+	{ import = "plugins.mermaid" },
 
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })

@@ -28,6 +28,7 @@ return {
 						"qmljs",
 						"php",
 						"phpdoc",
+						"mermaid",
 					},
 					highlight = { enable = true },
 					indent = { enable = true },
