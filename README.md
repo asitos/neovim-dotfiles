@@ -2,6 +2,14 @@
 
 personal neovim configuration files
 
+## showcase
+
+<div align="center">
+  <img src="./assets/ss1.png" alt="dashboard" width="100%" />
+
+  <img src="./assets/ss2.png" alt="editor" width="100%" />
+</div>
+
 ## plugins
 
 <div align="center">
@@ -14,6 +22,7 @@ personal neovim configuration files
 | [dashboard.nvim](https://github.com/nvimdev/dashboard-nvim) | start screen |
 | [flash.nvim](https://github.com/folke/flash.nvim) | fast navigation & jump motions |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | lsp configuration |
+| [mermaid](https://github.com/kevalin/mermaid.nvim) | mermaid diagrams |
 | [lazy.nvim](https://github.com/folke/lazy.nvim) | plugin manager |
 | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | status line |
 | [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim) | obsidian vault integration |

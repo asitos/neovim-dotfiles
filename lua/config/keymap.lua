@@ -284,7 +284,7 @@ local function run_java_in_bottom_terminal()
 
 	-- Open a split terminal occupying the bottom 15 rows
 	vim.cmd("botright 15split")
-	vim.fn.termopen(cmd)
+	vim.cmd(string.format("terminal %s", cmd))
 
 	-- Enter terminal insert mode immediately
 	vim.cmd("startinsert")
@@ -299,6 +299,85 @@ vim.api.nvim_create_autocmd("FileType", {
 			buffer = args.buf,
 			silent = true,
 		})
+	end,
+})
+
+-- Go compilation and execution
+local function run_go()
+	vim.cmd("write")
+	local dir = vim.fn.expand("%:p:h")
+	local file = vim.fn.expand("%:p")
+	local root = vim.fs.root(0, { "go.mod", ".git" })
+	local cmd
+	if root and vim.fn.filereadable(root .. "/go.mod") == 1 then
+		cmd = string.format("cd '%s' && go run .", dir)
+	else
+		cmd = string.format("cd '%s' && go run '%s'", dir, file)
+	end
+
+	vim.cmd("botright 15split")
+	vim.cmd(string.format("terminal %s", cmd))
+	vim.cmd("startinsert")
+end
+
+local function build_go()
+	vim.cmd("write")
+	local dir = vim.fn.expand("%:p:h")
+	local file = vim.fn.expand("%:p")
+	local output = vim.fn.expand("%:p:r")
+	local root = vim.fs.root(0, { "go.mod", ".git" })
+	local cmd
+	if root and vim.fn.filereadable(root .. "/go.mod") == 1 then
+		cmd = string.format("cd '%s' && go build -v .", dir)
+	else
+		cmd = string.format("cd '%s' && go build -o '%s' '%s'", dir, output, file)
+	end
+
+	vim.cmd("botright 15split")
+	vim.cmd(string.format("terminal %s", cmd))
+	vim.cmd("startinsert")
+end
+
+local function test_go()
+	vim.cmd("write")
+	local dir = vim.fn.expand("%:p:h")
+	local cmd = string.format("cd '%s' && go test -v .", dir)
+
+	vim.cmd("botright 15split")
+	vim.cmd(string.format("terminal %s", cmd))
+	vim.cmd("startinsert")
+end
+
+local function install_go()
+	vim.cmd("write")
+	local dir = vim.fn.expand("%:p:h")
+	local file = vim.fn.expand("%:p")
+	local root = vim.fs.root(0, { "go.mod", ".git" })
+	local cmd
+	if root and vim.fn.filereadable(root .. "/go.mod") == 1 then
+		cmd = string.format("cd '%s' && go install .", dir)
+	else
+		cmd = string.format("cd '%s' && go install '%s'", dir, file)
+	end
+
+	vim.cmd("botright 15split")
+	vim.cmd(string.format("terminal %s", cmd))
+	vim.cmd("startinsert")
+end
+
+vim.keymap.set("n", "<leader>gr", run_go, { desc = "Go: Run" })
+vim.keymap.set("n", "<leader>gb", build_go, { desc = "Go: Build" })
+vim.keymap.set("n", "<leader>gt", test_go, { desc = "Go: Test" })
+vim.keymap.set("n", "<leader>gi", install_go, { desc = "Go: Install" })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "go", "gomod" },
+	callback = function(args)
+		local opts = { buffer = args.buf, silent = true }
+		vim.keymap.set("n", "<leader>gr", run_go, vim.tbl_extend("force", opts, { desc = "Go: Run" }))
+		vim.keymap.set("n", "<leader>gb", build_go, vim.tbl_extend("force", opts, { desc = "Go: Build" }))
+		vim.keymap.set("n", "<leader>gt", test_go, vim.tbl_extend("force", opts, { desc = "Go: Test" }))
+		vim.keymap.set("n", "<leader>gi", install_go, vim.tbl_extend("force", opts, { desc = "Go: Install" }))
 	end,
 })
 

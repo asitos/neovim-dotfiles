@@ -18,6 +18,7 @@ require("lazy").setup({
 	{ import = "plugins.twilight" },
 	{ import = "plugins.leetcode" },
 	{ import = "plugins.mermaid" },
+	{ import = "plugins.marks" },
 
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })

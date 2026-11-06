@@ -29,6 +29,8 @@ return {
 						"php",
 						"phpdoc",
 						"mermaid",
+						"go",
+						"gomod",
 					},
 					highlight = { enable = true },
 					indent = { enable = true },
